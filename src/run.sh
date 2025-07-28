@@ -12,14 +12,11 @@ while true; do
   echo "Checking connectivity to $HOST..."
 
   if ping -c 1 -W 5 "$HOST" > /dev/null 2>&1; then
-    status=0
     echo "Host $HOST is reachable"
+    send_status 0;
   else
-    status=1
     echo "Host $HOST is unreachable"
   fi
-
-  send_status $status;
 
   sleep $INTERVAL
 done
